@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const url = "http://localhost:3001";
+
 export const importEmployees = async (file, yearType) => {
   const formData = new FormData();
   formData.append('file', file);
@@ -7,7 +9,7 @@ export const importEmployees = async (file, yearType) => {
 
   try {
     const response = await axios.post(
-      'http://localhost:3001/api/employee/import', 
+      `${url}/api/employee/import`, 
       formData, 
       {
         headers: {
@@ -31,7 +33,7 @@ export const generateAssignments = async (file, yearType) => {
   formData.append('yearType', yearType);
 
   try {
-    const response = await axios.get('http://localhost:3001/api/generate-assignments');
+    const response = await axios.get(`${url}/api/generate-assignments`);
     return response;
   } catch (error) {
     if (error.response) {
